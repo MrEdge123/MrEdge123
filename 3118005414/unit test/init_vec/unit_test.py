@@ -18,7 +18,7 @@ def init_vec(words) :
             vec[word] = 0
     return vec
 
-words = ["我", "今天", "wo", "\n", "", "去", "上学"]
+words = ["我", "今天", "wo", "\n", "", "去", "上学", " "]
 vec = init_vec(words)
 for key in vec :
     print(key + ":", vec[key])
