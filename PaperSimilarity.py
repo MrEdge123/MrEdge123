@@ -1,5 +1,15 @@
 import jieba
 
-str = "duibuqi, 今天我要去上课, keyi等ka一等ma"
+def init_vec(words)
+    vec = {}
+    for word in words :
+        
 
-print("/".join(jieba.cut(str)))
+org_paper = "我今天要去上学"
+chk_paper = "我昨天跑步了"
+
+str = org_paper + chk_paper
+
+
+
+
