@@ -17,10 +17,12 @@ def cal_cos(vec1, vec2) :
     len1 = cal_len(vec1)
     len2 = cal_len(vec2)
 
+    if len1 == 0 or len2 == 0 : return 0
+
     return up / (len1 * len2)
 
-vec1 = {"我": 2, "昨天": 3, "今天": 1, "去": 1, "上学": 1, "跑步": 0}
-vec2 = {"我": 0, "昨天": 0, "今天": 4, "去": 4, "上学": 2, "跑步": 0}
+vec1 = {"我": 1, "昨天": 1, "今天": 1, "去": 1, "上学": 1, "跑步": 0}
+vec2 = {"我": 0, "昨天": 0, "今天": 0, "去": 0, "上学": 0, "跑步": 0}
 
 ans = cal_cos(vec1, vec2)
 print(ans)
