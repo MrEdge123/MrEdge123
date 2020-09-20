@@ -1,5 +1,6 @@
-import jieba  #导入结巴分词库
-import math   #导入数学库
+import jieba  #导入结巴分词模块
+import math   #导入数学模块
+import sys    #导入系统模块
 
 '''
 需要写的函数: return_type funtion(type:parameter)
@@ -62,13 +63,20 @@ num cal_cos(dict:vec1, dict:vec2) : 计算vec1和vec2的余弦相似度
 
 '''
 
-org_paper = "我今天要去上学"
-chk_paper = "我昨天跑步了"
+org_file = open(sys.argv[1], "r")
+chk_file = open(sys.argv[2], "r")
+out_file = open(sys.argv[3], "w")
 
+org_paper = org_file.read()
+chk_paper = chk_file.read()
+
+#合并文章
 text = org_paper + chk_paper
 
+#得到词频向量结构
 vec_struct = init_vec(jieba.cut(text))
 
+#得到词频向量
 vec1 = vec_struct.copy()
 vec2 = vec_struct.copy()
 gen_vec(jieba.cut(org_paper), vec1)
@@ -77,6 +85,12 @@ gen_vec(jieba.cut(chk_paper), vec2)
 for key in vec1 :
     print(key + ":" + repr(vec1[key]) + " " + repr(vec2[key]))
 
+#计算余弦相似度
 ans = cal_cos(vec1, vec2)
 
-print("similarity:" + repr(ans))
+print("similarity:{0:.2f}".format(ans))
+out_file.write("{0:.2f}".format(ans))
+
+org_file.close()
+chk_file.close()
+out_file.close()
