@@ -13,7 +13,7 @@ num cal_cos(dict:vec1, dict:vec2) : 计算vec1和vec2的余弦相似度
 
 #检查word是否为中文词语
 def check_chinese(word) :
-    if len(word) == 0 : return False
+    if len(word) <= 1 : return False
 
     for ch in word :
         if ch < '\u4e00' or ch > '\u9fa5' :  #中文字符范围
