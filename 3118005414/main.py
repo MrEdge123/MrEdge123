@@ -15,6 +15,7 @@ num cmp_simhash(num:simhash1, num:simhash2) : 计算simhash1和simhash2的海明
 
 '''
 
+@profile
 # 主函数
 def main() :
     org_file = open(sys.argv[1], "r", encoding="utf-8")
