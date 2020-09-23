@@ -11,8 +11,8 @@ def simhash(vec) :
         val = hash64(key)
         pos = 0
         while val > 0 :
-            if val & 1 : cnt[pos] += len(key)
-            else : cnt[pos] -= len(key)
+            if val & 1 : cnt[pos] += vec[key]
+            else : cnt[pos] -= vec[key]
             val = val >> 1
             pos += 1
     
@@ -40,8 +40,8 @@ def cmp_simhash(simhash1, simhash2) :
     return (64.0 - diff) / 64
 
 if __name__ == "__main__" :
-    vec1 = {"我": 1, "昨天": 1, "今天": 1, "去": 1, "上学": 1, "跑步": 0}
-    vec2 = {"我": 1, "昨天": 1, "今天": 1, "去": 1, "上学": 0, "跑步": 1}
+    vec1 = {"我": 1, "今天": 1, "去": 1, "上学": 1, "了": 1}
+    vec2 = {"我": 1, "昨天": 1, "运动": 1, "1": 1, "小时": 1}
 
     simhash1 = simhash(vec1)
     simhash2 = simhash(vec2)
