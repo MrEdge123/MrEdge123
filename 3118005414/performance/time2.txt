@@ -1,0 +1,39 @@
+Wrote profile results to main.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 1.4842 s
+File: main.py
+Function: main at line 18
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    18                                           @profile
+    19                                           # 主函数
+    20                                           def main() :
+    21         1        150.0    150.0      0.0      org_file = open(sys.argv[1], "r", encoding="utf-8")
+    22         1         99.0     99.0      0.0      chk_file = open(sys.argv[2], "r", encoding="utf-8")
+    23         1        255.0    255.0      0.0      out_file = open(sys.argv[3], "w", encoding="utf-8")
+    24                                           
+    25         1        183.0    183.0      0.0      org_paper = org_file.read()
+    26         1        405.0    405.0      0.0      chk_paper = chk_file.read()
+    27                                           
+    28                                               # 得到词频向量
+    29         1     983589.0 983589.0     66.3      vec1 = gen_vec(jieba.lcut(org_paper, cut_all=True))
+    30         1     113933.0 113933.0      7.7      vec2 = gen_vec(jieba.lcut(chk_paper, cut_all=True))
+    31                                           
+    32                                               # 计算simhash签名
+    33         1     145271.0 145271.0      9.8      simhash1 = simhash(vec1)
+    34         1     239860.0 239860.0     16.2      simhash2 = simhash(vec2)
+    35                                           
+    36         1         55.0     55.0      0.0      print("{0:064b}".format(simhash1))    
+    37         1         11.0     11.0      0.0      print("{0:064b}".format(simhash2))
+    38                                           
+    39                                               # 计算相似度
+    40         1        103.0    103.0      0.0      ans = cmp_simhash(simhash1, simhash2)
+    41                                           
+    42         1         16.0     16.0      0.0      print("similarity:{0:.2f}".format(ans))
+    43         1          3.0      3.0      0.0      out_file.write("{0:.2f}".format(ans))
+    44                                           
+    45         1         63.0     63.0      0.0      org_file.close()
+    46         1         27.0     27.0      0.0      chk_file.close()
+    47         1        176.0    176.0      0.0      out_file.close()
