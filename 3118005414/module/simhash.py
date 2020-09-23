@@ -1,5 +1,3 @@
-import jieba  #导入结巴分词库
-
 #计算64位hash
 def hash64(str) :
     return (hash(str) ** 2) % (1 << 64) 
@@ -41,7 +39,7 @@ def cmp_simhash(simhash1, simhash2) :
 
 if __name__ == "__main__" :
     vec1 = {"我": 1, "今天": 1, "去": 1, "上学": 1, "了": 1}
-    vec2 = {"我": 1, "昨天": 1, "运动": 1, "1": 1, "小时": 1}
+    vec2 = {"我": 1, "今天": 1, "去":1, "运动": 1, "1": 1, "小时": 1}
 
     simhash1 = simhash(vec1)
     simhash2 = simhash(vec2)

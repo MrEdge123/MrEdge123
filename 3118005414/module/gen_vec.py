@@ -1,5 +1,3 @@
-import jieba  #导入结巴分词库
-
 #检查word是否合法
 def check(word) :
     if len(word) == 0 : return False
@@ -22,8 +20,8 @@ def gen_vec(words) :
     return vec
 
 if __name__ == "__main__" :
-    words = ["我", " ", "\n", "去", "跑步", "2", "w", "word", "HaHa"]
-
+    words = ["我", "", "\n", "去", "跑步", "2", "w", "word", "HaHa"]
     vec = gen_vec(words)
+
     for key in vec :
-        print(key + ":", vec[key])
+        print(key + ":" + str(vec[key]))
