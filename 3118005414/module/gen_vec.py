@@ -1,4 +1,4 @@
-#检查word是否合法
+# 检查word是否合法
 def check(word) :
     if len(word) == 0 : return False
 
@@ -12,7 +12,7 @@ def check(word) :
 
     return True
 
-#根据words, 生成词频向量vec
+# 根据words, 生成词频向量vec
 def gen_vec(words) :
     vec = {}
     for key in words :

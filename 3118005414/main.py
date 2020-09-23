@@ -1,5 +1,7 @@
-import jieba          #导入结巴模块
-import sys            #导入命令行参数模块
+import jieba          # 导入结巴模块
+import sys            # 导入命令行参数模块
+
+# 导入自定义模块
 from module.gen_vec import gen_vec
 from module.simhash import simhash
 from module.simhash import cmp_simhash
@@ -13,7 +15,7 @@ num cmp_simhash(num:simhash1, num:simhash2) : 计算simhash1和simhash2的海明
 
 '''
 
-#主函数
+# 主函数
 def main() :
     org_file = open(sys.argv[1], "r", encoding="utf-8")
     chk_file = open(sys.argv[2], "r", encoding="utf-8")
@@ -22,18 +24,18 @@ def main() :
     org_paper = org_file.read()
     chk_paper = chk_file.read()
 
-    #得到词频向量
+    # 得到词频向量
     vec1 = gen_vec(jieba.lcut(org_paper, cut_all=True))
     vec2 = gen_vec(jieba.lcut(chk_paper, cut_all=True))
 
-    #计算simhash签名
+    # 计算simhash签名
     simhash1 = simhash(vec1)
-    print("{0:064b}".format(simhash1))
+    simhash2 = simhash(vec2)
 
-    simhash2 = simhash(vec2)    
+    print("{0:064b}".format(simhash1))    
     print("{0:064b}".format(simhash2))
 
-    #计算相似度
+    # 计算相似度
     ans = cmp_simhash(simhash1, simhash2)
 
     print("similarity:{0:.2f}".format(ans))

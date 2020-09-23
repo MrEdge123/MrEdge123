@@ -1,18 +1,18 @@
-#检查word是否合法
+# 检查word是否合法
 def check(word) :
     if len(word) == 0 : return False
 
     ok = True
     for ch in word :
-        if ch >= '\u4e00' and ch <= '\u9fa5' : ok = True #中文字符范围
-        #elif ch >= 'a' and ch <= 'z' : ok = True
-        #elif ch >= 'A' and ch <= 'Z' : ok = True
+        if ch >= '\u4e00' and ch <= '\u9fa5' : ok = True # 中文字符范围
+        # elif ch >= 'a' and ch <= 'z' : ok = True
+        # elif ch >= 'A' and ch <= 'Z' : ok = True
         elif ch >= '0' and ch <= '9' : ok = True
         else : return False
 
     return True
 
-#根据words, 生成词频向量vec
+# 根据words, 生成词频向量vec
 def gen_vec(words) :
     vec = {}
     for key in words :

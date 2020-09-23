@@ -1,8 +1,8 @@
-#计算64位hash
+# 计算64位hash
 def hash64(str) :
     return (hash(str) ** 2) % (1 << 64) 
 
-#计算vec的simhash
+# 计算vec的simhash
 def simhash(vec) :
     cnt = [0] * 64
     for key in vec :
@@ -23,7 +23,7 @@ def simhash(vec) :
 
     return ans
 
-#对比simhash
+# 对比simhash
 def cmp_simhash(simhash1, simhash2) :
     pos = 0
     diff = 0
