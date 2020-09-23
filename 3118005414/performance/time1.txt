@@ -1,7 +1,7 @@
 Wrote profile results to main.py.lprof
 Timer unit: 1e-06 s
 
-Total time: 2.40735 s
+Total time: 1.52232 s
 File: main.py
 Function: main at line 18
 
@@ -10,30 +10,30 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     18                                           @profile
     19                                           # 主函数
     20                                           def main() :
-    21         1        108.0    108.0      0.0      org_file = open(sys.argv[1], "r", encoding="utf-8")
-    22         1         80.0     80.0      0.0      chk_file = open(sys.argv[2], "r", encoding="utf-8")
-    23         1        226.0    226.0      0.0      out_file = open(sys.argv[3], "w", encoding="utf-8")
+    21         1        141.0    141.0      0.0      org_file = open(sys.argv[1], "r", encoding="utf-8")
+    22         1         92.0     92.0      0.0      chk_file = open(sys.argv[2], "r", encoding="utf-8")
+    23         1        322.0    322.0      0.0      out_file = open(sys.argv[3], "w", encoding="utf-8")
     24                                           
-    25         1        130.0    130.0      0.0      org_paper = org_file.read()
-    26         1        101.0    101.0      0.0      chk_paper = chk_file.read()
+    25         1        394.0    394.0      0.0      org_paper = org_file.read()
+    26         1        120.0    120.0      0.0      chk_paper = chk_file.read()
     27                                           
     28                                               # 得到词频向量
-    29         1    1763632.0 1763632.0     73.3      vec1 = gen_vec(jieba.lcut(org_paper))
-    30         1     299670.0 299670.0     12.4      vec2 = gen_vec(jieba.lcut(chk_paper))
+    29         1     941667.0 941667.0     61.9      vec1 = gen_vec(jieba.lcut(org_paper, cut_all=True))
+    30         1     115406.0 115406.0      7.6      vec2 = gen_vec(jieba.lcut(chk_paper, cut_all=True))
     31                                           
     32                                               # 计算simhash签名
-    33         1     119576.0 119576.0      5.0      simhash1 = simhash(vec1)
-    34         1     223397.0 223397.0      9.3      simhash2 = simhash(vec2)
+    33         1     204220.0 204220.0     13.4      simhash1 = simhash(vec1)
+    34         1     259460.0 259460.0     17.0      simhash2 = simhash(vec2)
     35                                           
-    36         1         56.0     56.0      0.0      print("{0:064b}".format(simhash1))    
-    37         1         11.0     11.0      0.0      print("{0:064b}".format(simhash2))
+    36         1         64.0     64.0      0.0      print("{0:064b}".format(simhash1))    
+    37         1          9.0      9.0      0.0      print("{0:064b}".format(simhash2))
     38                                           
     39                                               # 计算相似度
-    40         1        105.0    105.0      0.0      ans = cmp_simhash(simhash1, simhash2)
+    40         1        112.0    112.0      0.0      ans = cmp_simhash(simhash1, simhash2)
     41                                           
-    42         1         16.0     16.0      0.0      print("similarity:{0:.2f}".format(ans))
+    42         1         11.0     11.0      0.0      print("similarity:{0:.2f}".format(ans))
     43         1          3.0      3.0      0.0      out_file.write("{0:.2f}".format(ans))
     44                                           
-    45         1         54.0     54.0      0.0      org_file.close()
-    46         1         25.0     25.0      0.0      chk_file.close()
-    47         1        161.0    161.0      0.0      out_file.close()
+    45         1         60.0     60.0      0.0      org_file.close()
+    46         1         31.0     31.0      0.0      chk_file.close()
+    47         1        204.0    204.0      0.0      out_file.close()
